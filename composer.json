@@ -1,0 +1,46 @@
+{
+  "name": "bap72190/composer-importer",
+  "description": "Import/update composer file with contrib modules from an outdated site.",
+  "type": "composer-plugin",
+  "require": {
+    "php": ">=5.6",
+    "composer-plugin-api": "^1.1.0",
+    "composer/semver": "^3",
+    "symfony/finder": "^3.4",
+    "symfony/yaml": "^3.4",
+    "webflo/drupal-finder": "^1.1",
+    "webmozart/path-util": "^2.3"
+  },
+  "require-dev": {
+    "alchemy/zippy": "^0.4.8",
+    "composer/composer": "^2.0",
+    "phpunit/phpunit": "^5.7",
+    "satooshi/php-coveralls": "^2.0",
+    "squizlabs/php_codesniffer": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "ae\\ComposerImporter\\": "src",
+      "ae\\ComposerImporter\\Composer\\": "src/Composer"
+    }
+  },
+  "extra": {
+    "class": "ae\\ComposerImporter\\Composer\\Plugin",
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
+  "minimum-stability": "stable",
+  "scripts": {
+    "lint": [
+      "find src -name '*.php' -print0 | xargs -0 -n1 php -l"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "platform": {
+      "php": "5.6"
+    }
+  }
+}
