@@ -197,7 +197,7 @@ class ImporterDrupalCommand extends BaseCommand
 		} else {
 			$this->baseDir = $drupalFinder->getComposerRoot();
 			$confirm = $this->getIO()
-				->askConfirmation("<question>Assuming that composer.json should be generated at $this->baseDir. Is this correct?</question> ");
+				->askConfirmation("<question>Assuming that composer.json should be merged from $this->baseDir. Is this correct?</question> ");
 			if (!$confirm) {
 				throw new Exception("Please use --composer-root to specify the correct Composer root directory");
 			}
