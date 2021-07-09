@@ -108,7 +108,7 @@ class DrupalInspector
 		}
 		
 		if (preg_match('/@(?i)(alpha|beta|rc)$/', $version)) {
-			return $drupal_version;	
+			return preg_replace('/^\^/', '', $drupal_version);
 		}
 
 		$matches = [];
