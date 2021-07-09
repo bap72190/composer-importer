@@ -41,7 +41,7 @@ class DrupalInspector
 			} else {
 				// Dev versions of modules do not include version info in yaml files.
 				// Look in composer.json for a version constraint.
-				if (array_key_exists('drupal/' . $machine_name, $composer_json->require)) {
+				if (isset($composer_json->require->{'drupal/' . $machine_name}) && !empty($composer_json->require->{'drupal/' . $machine_name})) {
 					$version_constraint = $composer_json->require->{'drupal/' . $machine_name};
 					$semantic_version = self::getSemanticVersion($version_constraint);
 				}
@@ -105,6 +105,10 @@ class DrupalInspector
 
 		if (preg_match('/-dev$/', $version)) {
 			return preg_replace('/^(\d).+-dev$/', '$1.x-dev', $version);
+		}
+		
+		if (preg_match('/@(?i)(alpha|beta|rc)$/', $version)) {
+			return $drupal_version;	
 		}
 
 		$matches = [];
