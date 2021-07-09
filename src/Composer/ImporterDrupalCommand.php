@@ -241,6 +241,7 @@ class ImporterDrupalCommand extends BaseCommand
 
 	protected function printPostScript()
 	{
+		$this->getIO()->write("<comment>If any packages above were added without constraint, you should review the version currently installed and update the composer file accordingly.</comment>");
 		$this->getIO()->write("<info>Completed Import of Drupal Modules!</info>");
 	}
 
